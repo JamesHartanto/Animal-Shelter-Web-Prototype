@@ -22,7 +22,7 @@ public class animalController {
         return "index";
     }
 
-    @GetMapping("/animalform")
+    @GetMapping("/animalForm")
     public String animalForm(Model model, Integer animalId) {
         if (animalId == null){
             model.addAttribute("animal",new Animal());
@@ -32,7 +32,7 @@ public class animalController {
         return "animalForm";
     }
 
-    @GetMapping("/animallist")
+    @GetMapping("/animalList")
     public String animalList(Model model, @RequestParam(defaultValue = "") String searchName,
                              @RequestParam(defaultValue = "") String searchSpecies,
                              @RequestParam(defaultValue = "") String searchBreed,

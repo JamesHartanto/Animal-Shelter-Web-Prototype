@@ -11,13 +11,13 @@
 <nav>
     <ul>
         <li><a href="index.html" th:href="@{/}">Homepage</a></li>
-        <li><a href="animalForm.html" th:href="@{/animalform}">Add an animal</a></li>
+        <li><a href="animalForm.html" th:href="@{/animalForm}">Add an animal</a></li>
     </ul>
 </nav>
 
 <h2>Animal List</h2>
 
-<form action="animalList.html" th:action="@{/animallist}" method="get">
+<form action="animalList.html" th:action="@{/animalList}" method="get">
     <label>
         <span>Search Name:</span>
         <input type="text" name="searchName" value="" th:value="${searchName}"/>
@@ -39,21 +39,11 @@
 
 <table>
     <tr>
-        <th>
-            NAME
-        </th>
-        <th>
-            SPECIES
-        </th>
-        <th>
-            BREED
-        </th>
-        <th>
-            DESCRIPTION
-        </th>
-        <th>
-            EDIT
-        </th>
+        <th>NAME</th>
+        <th>SPECIES</th>
+        <th>BREED</th>
+        <th>DESCRIPTION</th>
+        <th>EDIT</th>
     </tr>
     <tr th:each="animal:${listAnimals}">
         <td th:text="${animal.getName()}">Name1</td>
@@ -61,7 +51,7 @@
         <td th:text="${animal.getBreed()}">Breed1</td>
         <td th:text="${animal.getDescription()}">Description1</td>
         <td>
-            <a href="animalForm.html" th:href="@{'/animalform?animalId=' + ${animal.getAnimalId()}}">Edit</a>
+            <a href="animalForm.html" th:href="@{'/animalForm?animalId=' + ${animal.getAnimalId()}}">Edit</a>
         </td>
     </tr>
     <tr th:remove="all">

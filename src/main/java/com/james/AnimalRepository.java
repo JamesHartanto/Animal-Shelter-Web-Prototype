@@ -43,11 +43,14 @@ public class AnimalRepository {
 
     public void saveAnimal(Animal animal) {
         if (animal.getAnimalId() == null){
-            jdbcTemplate.update("INSERT INTO animaltable(name,species,breed,description) VALUES (?,?,?,?)",
-                    new Object[]{animal.getName(),animal.getSpecies(),animal.getBreed(),animal.getDescription()});
+            jdbcTemplate.update("INSERT INTO animaltable(name,species,breed,description) " +
+                            "VALUES (?,?,?,?)",
+                    animal.getName(),animal.getSpecies(),animal.getBreed(),animal.getDescription());
         } else {
-            jdbcTemplate.update("UPDATE animaltable SET name=?, species=?, breed=?, description=? WHERE id=?",
-                    new Object[]{animal.getName(),animal.getSpecies(),animal.getBreed(),animal.getDescription(),animal.getAnimalId()});
+            jdbcTemplate.update("UPDATE animaltable " +
+                            "SET name=?, species=?, breed=?, description=? " +
+                            "WHERE id=?",
+                    animal.getName(),animal.getSpecies(),animal.getBreed(),animal.getDescription(),animal.getAnimalId());
         }
     }
 }

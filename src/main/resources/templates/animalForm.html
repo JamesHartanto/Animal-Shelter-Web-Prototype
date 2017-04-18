@@ -21,23 +21,24 @@
     <form action="animalList.html" th:action="@{/saveAnimal}" th:object="${animal}" method="post">
         <label>
             <span>Name:</span>
-            <input type="text" value="" th:value="*{name}" required="required"/>
+            <input type="text" name="name" value="" th:value="*{name}" required="required"/>
         </label>
 
         <label>
             <span>Species:</span>
-            <input type="text" value="" th:value="*{species}" required="required"/>
+            <input type="text" name="species" value="" th:value="*{species}" required="required"/>
         </label>
 
         <label>
             <span>Breed:</span>
-            <input type="text" value="" th:value="*{breed}" />
+            <input type="text" name="breed" value="" th:value="*{breed}" />
         </label>
 
         <label>
             <span>Description:</span>
-            <input type="text" value="" th:value="*{description}" required="required"/>
+            <input type="text" name="description" value="" th:value="*{description}" required="required"/>
         </label>
+        <input type="hidden" name="animalId" value="" th:value="*{animalId}" />
         <button>SAVE</button>
     </form>
 </body>
