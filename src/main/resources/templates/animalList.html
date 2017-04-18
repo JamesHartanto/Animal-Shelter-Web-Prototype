@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Animal List</title>
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{styles.css}"/>
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li><a href="index.html" th:href="@{/}">Homepage</a></li>
+        <li><a href="animalForm.html" th:href="@{/animalform}">Add an animal</a></li>
+    </ul>
+</nav>
+
+<h2>Animal List</h2>
+
+<form action="animalList.html" th:action="@{/animallist}" method="get">
+    <label>
+        <span>Search Name:</span>
+        <input type="text" name="searchName" value="" th:value="${searchName}"/>
+    </label>
+    <label>
+        <span>Search Species:</span>
+        <input type="text" name="searchSpecies" value="" th:value="${searchSpecies}"/>
+    </label>
+    <label>
+        <span>Search Breed:</span>
+        <input type="text" name="searchBreed" value="" th:value="${searchBreed}"/>
+    </label>
+    <label>
+        <span>Search Description:</span>
+        <input type="text" name="searchDescription" value="" th:value="${searchDescription}"/>
+    </label>
+    <button>FIND MY ANIMAL</button>
+</form>
+
+<table>
+    <tr>
+        <th>
+            NAME
+        </th>
+        <th>
+            SPECIES
+        </th>
+        <th>
+            BREED
+        </th>
+        <th>
+            DESCRIPTION
+        </th>
+    </tr>
+    <tr th:each="animal:${listAnimals}">
+        <td th:text="${animal.getName()}">Name1</td>
+        <td th:text="${animal.getSpecies()}">Species1</td>
+        <td th:text="${animal.getBreed()}">Breed1</td>
+        <td th:text="${animal.getDescription()}">Description1</td>
+    </tr>
+    <tr th:remove="all">
+        <td>Name2</td>
+        <td>Species2</td>
+        <td>Breed2</td>
+        <td>Description2</td>
+    </tr>
+</table>
+</body>
+</html>

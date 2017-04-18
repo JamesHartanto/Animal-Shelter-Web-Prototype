@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add/Update Animal</title>
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{styles.css}"/>
+
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" th:href="@{/}">Homepage</a></li>
+            <li><a href="animalList.html" th:href="@{/animallist}">Return to the list</a></li>
+        </ul>
+    </nav>
+
+    <h2>Add/Edit an Animal</h2>
+
+    <form>
+        <label>
+            <span>Name:</span>
+            <input type="text" required="required"/>
+        </label>
+
+        <label>
+            <span>Species:</span>
+            <input type="text" required="required"/>
+        </label>
+
+        <label>
+            <span>Breed:</span>
+            <input type="text" />
+        </label>
+
+        <label>
+            <span>Description:</span>
+            <input type="text" required="required"/>
+        </label>
+    </form>
+</body>
+</html>
