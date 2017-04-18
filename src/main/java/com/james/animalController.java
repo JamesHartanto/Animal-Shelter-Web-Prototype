@@ -3,6 +3,8 @@ package com.james;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,12 +22,17 @@ public class animalController {
         return "index";
     }
 
-    @RequestMapping("/animalform")
-    public String animalForm() {
+    @GetMapping("/animalform")
+    public String animalForm(Model model, Integer animalId) {
+        if (animalId == null){
+            model.addAttribute("animal",new Animal());
+        } else{
+            model.addAttribute("animal",animalRepository.findAnimal(animalId));
+        }
         return "animalForm";
     }
 
-    @RequestMapping("/animallist")
+    @GetMapping("/animallist")
     public String animalList(Model model, @RequestParam(defaultValue = "") String searchName,
                              @RequestParam(defaultValue = "") String searchSpecies,
                              @RequestParam(defaultValue = "") String searchBreed,
@@ -36,6 +43,12 @@ public class animalController {
         model.addAttribute("searchBreed",searchBreed);
         model.addAttribute("searchDescription",searchDescription);
         return "animalList";
+    }
+
+    @PostMapping("/saveAnimal")
+    public String saveAnimal(Animal animal){
+        animalRepository.saveAnimal(animal);
+        return "redirect:/animalList";
     }
 }
 

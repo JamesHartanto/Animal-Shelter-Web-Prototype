@@ -29,4 +29,25 @@ public class AnimalRepository {
                         resultSet.getString("breed"),
                         resultSet.getString("description")));
     }
+
+    public Animal findAnimal(Integer animalId) {
+        return jdbcTemplate.queryForObject("SELECT * FROM animaltable WHERE id = ?",
+                new Object[]{animalId},
+                (resultSet, i) -> new Animal(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("species"),
+                        resultSet.getString("breed"),
+                        resultSet.getString("description")));
+    }
+
+    public void saveAnimal(Animal animal) {
+        if (animal.getAnimalId() == null){
+            jdbcTemplate.update("INSERT INTO animaltable(name,species,breed,description) VALUES (?,?,?,?)",
+                    new Object[]{animal.getName(),animal.getSpecies(),animal.getBreed(),animal.getDescription()});
+        } else {
+            jdbcTemplate.update("UPDATE animaltable SET name=?, species=?, breed=?, description=? WHERE id=?",
+                    new Object[]{animal.getName(),animal.getSpecies(),animal.getBreed(),animal.getDescription(),animal.getAnimalId()});
+        }
+    }
 }

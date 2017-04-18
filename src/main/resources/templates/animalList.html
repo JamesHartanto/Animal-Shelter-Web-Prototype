@@ -51,12 +51,18 @@
         <th>
             DESCRIPTION
         </th>
+        <th>
+            EDIT
+        </th>
     </tr>
     <tr th:each="animal:${listAnimals}">
         <td th:text="${animal.getName()}">Name1</td>
         <td th:text="${animal.getSpecies()}">Species1</td>
         <td th:text="${animal.getBreed()}">Breed1</td>
         <td th:text="${animal.getDescription()}">Description1</td>
+        <td>
+            <a href="animalForm.html" th:href="@{'/animalform?animalId=' + ${animal.getAnimalId()}}">Edit</a>
+        </td>
     </tr>
     <tr th:remove="all">
         <td>Name2</td>

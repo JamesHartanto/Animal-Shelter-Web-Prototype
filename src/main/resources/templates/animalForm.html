@@ -18,26 +18,27 @@
 
     <h2>Add/Edit an Animal</h2>
 
-    <form>
+    <form action="animalList.html" th:action="@{/saveAnimal}" th:object="${animal}" method="post">
         <label>
             <span>Name:</span>
-            <input type="text" required="required"/>
+            <input type="text" value="" th:value="*{name}" required="required"/>
         </label>
 
         <label>
             <span>Species:</span>
-            <input type="text" required="required"/>
+            <input type="text" value="" th:value="*{species}" required="required"/>
         </label>
 
         <label>
             <span>Breed:</span>
-            <input type="text" />
+            <input type="text" value="" th:value="*{breed}" />
         </label>
 
         <label>
             <span>Description:</span>
-            <input type="text" required="required"/>
+            <input type="text" value="" th:value="*{description}" required="required"/>
         </label>
+        <button>SAVE</button>
     </form>
 </body>
 </html>
