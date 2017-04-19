@@ -33,10 +33,10 @@ public class animalController {
     }
 
     @GetMapping("/animalList")
-    public String animalList(Model model, @RequestParam(defaultValue = "") String searchName,
+    public String animalList(Model model, String searchName,
                              @RequestParam(defaultValue = "") String searchSpecies,
-                             @RequestParam(defaultValue = "") String searchBreed,
-                             @RequestParam(defaultValue = "") String searchDescription){
+                             String searchBreed,
+                             String searchDescription){
         model.addAttribute("listAnimals", animalRepository.listAnimals(searchName, searchSpecies, searchBreed, searchDescription));
         model.addAttribute("searchName",searchName);
         model.addAttribute("searchSpecies",searchSpecies);
