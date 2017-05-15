@@ -17,7 +17,7 @@ public class animalController {
     @Autowired
     AnimalRepository animalRepository;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String homePage() {
         return "index";
     }
