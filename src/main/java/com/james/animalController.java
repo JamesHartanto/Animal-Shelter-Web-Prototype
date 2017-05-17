@@ -37,6 +37,20 @@ public class animalController {
                              @RequestParam(defaultValue = "") String searchSpecies,
                              String searchBreed,
                              String searchDescription){
+        // Filtering data when a field (not species) is populated
+        if (searchName != null || searchBreed != null || searchDescription != null){
+            if (searchSpecies.equals("")){
+                searchSpecies = " ";
+            }
+
+            // Another condition - to show everything when other fields are empty
+            if (searchName.isEmpty() && searchBreed.isEmpty() && searchDescription.isEmpty()){
+                if (searchSpecies.trim().isEmpty()){
+                    searchSpecies = "";
+                }
+            }
+        }
+
         model.addAttribute("listAnimals", animalRepository.listAnimals(searchName, searchSpecies, searchBreed, searchDescription));
         model.addAttribute("searchName",searchName);
         model.addAttribute("searchSpecies",searchSpecies);
